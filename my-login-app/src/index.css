@@ -1,13 +1,57 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Estilos CSS para el fondo de la imagen */
+.login-container {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url('../public/logo.png'); /* Ruta relativa desde la raíz del proyecto */
+  background-size: contain; /* Ajusta el tamaño de la imagen de fondo para cubrir todo el contenedor */
+  background-position: right; /* Coloca la imagen de fondo a la izquierda */
+  background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Estilos para el formulario y otros elementos restantes */
+.form-container {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+  /* Estilos para el formulario */
+  margin-right: 40%; /* Add a margin to move the form to the left */
+  display: flex; /* Add display flex to center the .formularioge container */
+  justify-content: center; /* Horizontally center .formularioge */
+  align-items: center; /* Vertically center .formularioge */
 }
+.formularioge {
+  background-color: #F5F5DC;
+  width: 45%;
+  border-radius: 10%;
+  /* You can add more styles specific to .formularioge if needed */
+}
+.custom-input {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc; /* Add a border to the input */
+  border-radius: 5px; /* Add rounded corners to the input */
+  margin-bottom: 10px;
+  background-color: #f0f0f0; /* Change the background color */
+  color: #333; /* Change the text color */
+}
+.custom-label {
+  font-size: 16px;
+}
+.custom-button {
+  background-color: #007bff; /* Change the background color of the button */
+  color: white; /* Change the text color of the button */
+  font-weight: bold; /* Apply bold text */
+  padding: 15px 20px; /* Increase padding to make it larger */
+  border: none; /* Remove the button border */
+  border-radius: 5px; /* Add rounded corners to the button */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Add a smooth background color transition on hover */
+}
+
+.custom-button:hover {
+  background-color: #0056b3; /* Change the background color on hover */
+}
+/* Otros estilos CSS para etiquetas, campos de entrada, botones, etc. */
