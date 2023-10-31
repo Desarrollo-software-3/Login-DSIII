@@ -31,10 +31,11 @@ import SoftButton from "components/SoftButton";
 import CoverLayout from "layouts/authentication/components/CoverLayout";
 
 // Images
-import curved9 from "assets/images/curved-images/curved-6.jpg";
+import curved9 from "assets/images/curved-images/curved-6.png";
 
 function SignIn() {
   const [rememberMe, setRememberMe] = useState(true);
+  const [error, setError] = useState('');
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
   const [formData, setFormData] = useState({
@@ -50,6 +51,8 @@ function SignIn() {
     });
   };
 
+  
+
   const handleSignIn = () => {
     // Realiza una solicitud POST al backend Django para autenticar al usuario
     fetch('http://127.0.0.1:8000/api/login/', {
@@ -64,11 +67,17 @@ function SignIn() {
       .then(data => {
         if (data.message) {
           // Inicio de sesión exitoso, podrías redirigir al usuario a otra página
-          alert('inicio seccion')
-          alert(data.message);
+          // alert(data.message);
+          const userData = data.user;
+          console.log(userData)
+          if (userData.admin){
+            setError("admon")
+          }else{
+            setError("noadmon")
+          }
         } else if (data.error) {
           // Autenticación fallida, muestra un mensaje de error
-          alert('error')
+          alert('Credenciales malas')
         }
       })
       .catch(error => {
@@ -86,7 +95,7 @@ function SignIn() {
         <SoftBox mb={2}>
           <SoftBox mb={1} ml={0.5}>
             <SoftTypography component="label" variant="caption" fontWeight="bold" name="email" >
-              Email
+              Email{error}
             </SoftTypography>
           </SoftBox>
           <SoftInput type="email" name="email" placeholder="Email" onChange={handleInputChange}/>

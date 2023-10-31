@@ -13,18 +13,29 @@ def login(request):
         password = data.get('password')
         
         try:
-            print("postts")
-            print(email)
-            print(password)
+            # print(email)
+            # print(password)
             # new_user = CustomUser.objects.create(email="nuevo@correo.com", password="pass")
-            print(CustomUser.objects.all())
+            # print(CustomUser.objects.all())
             # print(new_user)
             user = CustomUser.objects.get(email=email)
-            print(user)
+            user_data = {
+                'email': user.email,
+                'password': user.password,
+                'admin': user.admin,
+                # Otros campos de datos del usuario que desees pasar al frontend
+            }
+            # print(user)
             if user.password == password:
                 # Autenticación exitosa
-                print("E ",user.email,"P ",user.password, "A ", user.admin)
-                return JsonResponse({'message': 'Inicio de sesión exitoso'})
+                # print("E ",user.email,"P ",user.password, "A ", user.admin)
+                response_data = {
+                    'message': 'Inicio de sesión exitoso',
+                    'user': user_data,
+                }
+                
+                return JsonResponse(response_data)
+                
             else:
                 return JsonResponse({'error': 'Credenciales incorrectas'})
         except CustomUser.DoesNotExist:
