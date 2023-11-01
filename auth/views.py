@@ -9,19 +9,18 @@ import json
 def login(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        id = data.get('id')
         email = data.get('email')
         password = data.get('password')
         
         try:
             # print(email)
             # print(password)
-            # new_user = CustomUser.objects.create(email="nuevo@correo.com", password="pass")
+            # new_user = CustomUser.objects.create(email="azteca.integrador@gmail.com", password="Aztecaemail123@", admin=True)
             # print(CustomUser.objects.all())
             # print(new_user)
             user = CustomUser.objects.get(email=email)
             user_data = {
-                'id': user.id,
+                'id':user.id,   
                 'email': user.email,
                 'password': user.password,
                 'admin': user.admin,
