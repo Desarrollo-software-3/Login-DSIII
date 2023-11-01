@@ -9,6 +9,7 @@ import json
 def login(request):
     if request.method == 'POST':
         data = json.loads(request.body)
+        id = data.get('id')
         email = data.get('email')
         password = data.get('password')
         
@@ -20,6 +21,7 @@ def login(request):
             # print(new_user)
             user = CustomUser.objects.get(email=email)
             user_data = {
+                'id': user.id,
                 'email': user.email,
                 'password': user.password,
                 'admin': user.admin,
