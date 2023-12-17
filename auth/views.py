@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.urls import reverse
 from .models import CustomUser
 import json
+from urllib.parse import urlencode
 
 @csrf_exempt
 def login(request):
@@ -33,8 +35,8 @@ def login(request):
                 response_data = {
                     'message': 'Inicio de sesión exitoso',
                     'user': user_data,
+                    'redirect_url': 'http://localhost:3000/profile',
                 }
-                
                 return JsonResponse(response_data)
                 
             else:
